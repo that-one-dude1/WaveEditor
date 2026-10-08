@@ -1,0 +1,32 @@
+﻿<Window x:Class="WaveEditor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WaveEditor"
+        mc:Ignorable="d"
+        Title="Wave Editor" Height="375" Width="800">
+    <Grid>
+        <Label Content="Select an enemy type (or delay):" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="184"/>
+        <ComboBox x:Name="EnemyType" HorizontalAlignment="Left" Height="25" Margin="10,42,0,0" VerticalAlignment="Top" Width="184" SelectionChanged="ComboBox_SelectionChanged" Text="Enemy Type...">
+            <ComboBoxItem Content="Circle"/>
+            <ComboBoxItem Content="Triangle"/>
+            <ComboBoxItem Content="Pentagon"/>
+            <ComboBoxItem Content="Hexagon"/>
+            <ComboBoxItem x:Name="delayItem" Content="Delay"/>
+        </ComboBox>
+        <Label Content="Select interval (or delay timer):" HorizontalAlignment="Left" Height="27" Margin="10,137,0,0" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.489,2.426"/>
+        <Slider x:Name="slider" HorizontalAlignment="Left" Height="25" Margin="10,0,0,0" VerticalAlignment="Center" Width="170" Maximum="5" TickPlacement="TopLeft" ValueChanged="slider_ValueChanged"/>
+        <Label Content="{Binding Value, ElementName=slider}" HorizontalAlignment="Left" Height="28" Margin="185,170,0,0" VerticalAlignment="Top" Width="25"/>
+        <Button x:Name="add" Content="Add Item" HorizontalAlignment="Left" Height="28" Margin="10,195,0,0" VerticalAlignment="Top" Width="72" Click="Add_Button_Click"/>
+        <Button x:Name="end" Content="End Wave" HorizontalAlignment="Left" Height="28" Margin="10,282,0,0" VerticalAlignment="Top" Width="72" Click="end_Click"/>
+        <Button x:Name="load" Content="Load List" HorizontalAlignment="Left" Height="28" Margin="122,218,0,0" VerticalAlignment="Top" Width="72" Click="load_Click"/>
+        <Button x:Name="out" Content="Output List" HorizontalAlignment="Left" Height="28" Margin="122,261,0,0" VerticalAlignment="Top" Width="72" Click="out_Click"/>
+        <ListBox x:Name="waveListBox" HorizontalAlignment="Left" Height="273" Margin="249,42,0,0" VerticalAlignment="Top" Width="520" SelectionChanged="waveListBox_SelectionChanged"/>
+        <Label Content="Current wave list:" HorizontalAlignment="Left" Height="27" Margin="249,10,0,0" VerticalAlignment="Top" Width="103"/>
+        <Button x:Name="del" Content="Remove Item" HorizontalAlignment="Left" Height="28" Margin="10,238,0,0" VerticalAlignment="Top" Width="72" FontSize="11" Click="Del_Button_Click"/>
+        <Label Content="Enter number of enemies:" HorizontalAlignment="Left" Height="28" Margin="10,74,0,0" VerticalAlignment="Top" Width="170" RenderTransformOrigin="0.489,2.426" IsEnabled="{Binding IsSelected, ElementName=delayItem, Converter={StaticResource invertBoolConverter}}"/>
+        <TextBox x:Name="numBox" HorizontalAlignment="Left" Height="25" Margin="10,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="36" TextChanged="TextBox_TextChanged" IsEnabled="{Binding IsSelected, ElementName=delayItem, Converter={StaticResource invertBoolConverter}}"/>
+
+    </Grid>
+</Window>
